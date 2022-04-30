@@ -1,4 +1,9 @@
 h1 Create user
+
+if errors && errors.length > 0
+  each err in errors
+    span= err
+
 form(action="/user/create", method="POST")
   label Name
   input(type="text", name="name")
