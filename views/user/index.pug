@@ -1,0 +1,13 @@
+h1 Users
+
+form(action="", method="GET")
+  input(name="name")
+  button(type="submit") Search
+
+a(href="/user/create") Create user
+
+if users.length > 0
+  ul
+    each user in users
+      li
+        a(href=`/user/${user.id}`)= `User: ${user.name}`
