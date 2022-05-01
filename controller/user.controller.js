@@ -1,5 +1,6 @@
 const db = require("../db");
 const shortid = require("shortid");
+const md5 = require("md5");
 
 module.exports.getAll = (req, res) => {
   const name = req.query?.name || "";
@@ -14,6 +15,7 @@ module.exports.getAll = (req, res) => {
 module.exports.postCreate = (req, res) => {
   const user = res.locals.user;
   user.id = shortid.generate();
+  user.password = md5(user.password);
   db.get("users").push(user).write();
   res.redirect("/user");
 };

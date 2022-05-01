@@ -1,11 +1,11 @@
 const db = require("../db");
+const md5 = require('md5')
 
 module.exports.validateLogin = (req, res, next) => {
   const { name, password } = req.body;
   const errors = [];
-  const user = db.get("users").find({ name, password }).value();
-  if (user) {
-    console.log(user);
+  const user = db.get("users").find({ name }).value();
+  if (user && user.password === md5(password)) {
     res.locals.user = user;
     next();
   } else {
