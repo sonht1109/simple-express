@@ -5,9 +5,11 @@ if errors && errors.length > 0
   each err in errors
     span= err
 
-form(action="/user/create", method="POST")
+form(action="/user/create", method="POST", enctype="multipart/form-data")
   label Name
   input(type="text", name="name")
   label Password
   input(type="text", name="password")
+  label Avatar
+  input(type="file", accept="image/*" name="avt")
   button(type="submit") Submit

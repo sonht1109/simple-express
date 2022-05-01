@@ -3,7 +3,7 @@ const shortid = require("shortid");
 const md5 = require("md5");
 
 module.exports.getAll = (req, res) => {
-  const name = req.query?.name || "";
+  const name = req.query.name || '';
   const users = db.get("users").value();
   res.render("user.pug", {
     users: users.filter((u) =>

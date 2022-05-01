@@ -15,7 +15,7 @@ module.exports.validateLogin = (req, res, next) => {
 };
 
 module.exports.requireAuth = (req, res, next) => {
-  const id = req.cookies.user || undefined;
+  const id = req.signedCookies.user;
   if (!id) {
     res.redirect("/auth/login");
     return;

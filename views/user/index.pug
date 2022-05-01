@@ -12,3 +12,5 @@ if users.length > 0
     each user in users
       li
         a(href=`/user/${user.id}`)= `User: ${user.name}`
+        if(user.avt)
+          img(src=`/${user.avt}`, width="100", height="100")

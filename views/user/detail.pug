@@ -1,2 +1,4 @@
 h1 Hello, #{user.name}
 a(href="/") Home
+if(user.avt)
+  img(src=`/${user.avt}`, width="100", height="100")
