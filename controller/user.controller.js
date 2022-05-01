@@ -12,16 +12,10 @@ module.exports.getAll = (req, res) => {
 };
 
 module.exports.postCreate = (req, res) => {
-  const user = req.body;
-  const errors = [];
-  if (!user.name) {
-    errors.push("Name is required");
-    res.render("user/create.pug", { errors });
-  } else {
-    user.id = shortid.generate();
-    db.get("users").push(user).write();
-    res.redirect("/user");
-  }
+  const user = res.locals.user;
+  user.id = shortid.generate();
+  db.get("users").push(user).write();
+  res.redirect("/user");
 };
 
 module.exports.getOne = (req, res) => {
